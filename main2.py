@@ -84,3 +84,5 @@ regioni_aggr = data_analyzer.aggregate_regions()
 print(regioni_aggr)
 
 db_manager.create_table(regioni_aggr, 'regioni_aggregate')
+
+
