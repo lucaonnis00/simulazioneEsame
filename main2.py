@@ -28,6 +28,7 @@ prod_loader = DataLoader(produttivita)
 imp_econ_loader = DataLoader(importanza_economica)
 and_occ_loader = DataLoader(andamento_occupazione)
 
+#creazione dataframe da csv
 df_prod = prod_loader.carica_dati()
 df_imp_econ = imp_econ_loader.carica_dati()
 df_and_occ = and_occ_loader.carica_dati()
@@ -74,7 +75,7 @@ db_manager.close_connection()
 #chart_plotter.plot_bar_chart('produttivita')
 
 # Chiusura della connessione al database
-chart_plotter.close_connection()
+# chart_plotter.close_connection()
 
 # Creazione di un'istanza della classe DataAnalyzer
 data_analyzer = DataAnalyzer(df_prod, df_and_occ)

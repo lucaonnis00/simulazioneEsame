@@ -4,10 +4,11 @@ import pandas as pd
 from fastapi import FastAPI, Query
 from starlette.responses import FileResponse
 from DataExporter import DataExporter
+from data_viz import ChartPlotter
 
 app = FastAPI()
 data_exporter = DataExporter('pesca_database.db')
-
+data_viz = ChartPlotter('pesca_database.db')
 #FUNZIONA
 @app.get("/table/{table_name}")
 def get_table(table_name: str, da_anno: int = Query(..., description="Anno di inizio"),
@@ -51,3 +52,6 @@ def calculate_series():
     except Exception as e:
         return {"error": str(e)}
 
+@app.get("/plot/{table_name}")
+def plotta(table_name: str):
+    data_viz.plot_bar_chart(table_name=table_name)
